@@ -45,3 +45,36 @@ Settings:AddToggle(
         player.Character.HumanoidRootPart.Velocity =
             Vector3.new(currentvelocity.X, currentvelocity.Y / 0.5, currentvelocity.Z)
     end
+-- WHITELIST SYSTEM
+local whitelistURL = "https://pastebin.com/raw/TK6ZCXHS" -- URL of the Pastebin containing whitelisted usernames
+
+-- Fetch the list of whitelisted usernames from Pastebin
+local whitelist = {}
+local success, response = pcall(function()
+    return game:HttpGet(whitelistURL)
+end)
+
+if success then
+    for name in response:gmatch("[^\r\n]+") do
+        table.insert(whitelist, name)
+    end
+else
+    error("Failed to fetch whitelist from Pastebin.")
+end
+
+local playerName = game.Players.LocalPlayer.Name
+
+-- Check if player is whitelisted
+local isWhitelisted = false
+for _, name in ipairs(whitelist) do
+    if playerName == name then
+        isWhitelisted = true
+        break
+    end
+end
+
+if isWhitelisted then
+    loadstring(game:HttpGet('https://rentry.co/98sgeu76/raw'))() 
+else
+    game.Players.LocalPlayer:Kick("Pooron cant buy a 60 rbx script goofy nigga gng")
+end
