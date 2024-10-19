@@ -1,0 +1,47 @@
+getgenv().Settings = {
+    Enabled = true,
+    Key = Enum.KeyCode.C,
+    Prediction = 0.147823234,
+    HitPart = "HumanoidRootPart",
+    Argument = "UpdateMousePos",
+
+    Resolver = true -- still working on it
+}
+
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/imnotlegit11/ui/refs/heads/main/ui"))() local Window = Library:CreateWindow("echo.lua | [BETA]", Vector2.new(300, 300), Enum.KeyCode.P)
+local AimingTab = Window:CreateTab("Legit")
+local trust = AimingTab:CreateSector("MAIN", "left")
+
+trust:AddButton(
+    "Echo.lua",
+    function()
+        loadstring(game:HttpGet("https://pastefy.app/K5cMhIO0/raw"))()
+    end
+)
+
+local Settings = AimingTab:CreateSector("Settings", "right")
+
+Settings:AddTextbox(
+    "Prediction",
+    0.147823234,
+    function(State)
+        local Prediction = State
+    end
+)
+
+Settings:AddToggle(
+    "AntiGround Shot",
+    false,
+    function(first)
+        getgenv().AntiGround = first
+    end
+)
+
+-- { Function } --
+
+
+    if getgenv().AntiGround == true then
+        local currentvelocity = player.Character.HumanoidRootPart.Velocity
+        player.Character.HumanoidRootPart.Velocity =
+            Vector3.new(currentvelocity.X, currentvelocity.Y / 0.5, currentvelocity.Z)
+    end
