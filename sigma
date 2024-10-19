@@ -1,13 +1,3 @@
-getgenv().Settings = {
-    Enabled = true,
-    Key = Enum.KeyCode.C,
-    Prediction = 0.147823234,
-    HitPart = "HumanoidRootPart",
-    Argument = "UpdateMousePos",
-
-    Resolver = true -- still working on it
-}
-
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/imnotlegit11/ui/refs/heads/main/ui"))() local Window = Library:CreateWindow("echo.lua | [BETA]", Vector2.new(300, 300), Enum.KeyCode.P)
 local AimingTab = Window:CreateTab("Legit")
 local trust = AimingTab:CreateSector("MAIN", "left")
